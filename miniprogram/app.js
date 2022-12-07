@@ -8,7 +8,22 @@ App({
         traceUser: true,
       });
     }
+    if(!this.globalData.hasUserInfo){
+        wx.getStorage({
+            key:'userInfo',
+            success(res){
+                console.log(res.data);
+                this.globalData.nickName = res.data.nickName;
+                this.globalData.avatarUrl = res.data.avatarUrl;
+                this.globalData.hasUserInfo = true;
+            }
+        })
+    }
+    },
 
-    this.globalData = {};
-  }
+    globalData:{
+        hasUserInfo: false,
+        nickName:"",
+        avatarUrl:"",
+    },
 });

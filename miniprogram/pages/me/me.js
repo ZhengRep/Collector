@@ -1,11 +1,12 @@
 // pages/me/me.js
+const app = getApp()
 Page({
 
     /**
      * Page initial data
      */
     data: {
-
+        
     },
 
     /**
