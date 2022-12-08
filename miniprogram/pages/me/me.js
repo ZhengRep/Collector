@@ -1,67 +1,39 @@
 // pages/me/me.js
-const app = getApp()
 Page({
-
-    /**
-     * Page initial data
-     */
     data: {
-        
+      userInfo: ''
     },
-
-    /**
-     * Lifecycle function--Called when page load
-     */
-    onLoad(options) {
-
+    onLoad() {
+      let user = wx.getStorageSync('user')
+      console.log('进入小程序的index页面获取缓存', user)
+      this.setData({
+        userInfo: user
+      })
     },
-
-    /**
-     * Lifecycle function--Called when page is initially rendered
-     */
-    onReady() {
-
+    // 授权登录
+    login() {
+      wx.getUserProfile({
+        desc: '必须授权才可以继续使用',
+        success: res => {
+          let user = res.userInfo
+          // 把用户信息缓存到本地
+          wx.setStorageSync('user', user)
+          console.log("用户信息", user)
+          this.setData({
+            userInfo: user
+          })
+        },
+        fail: res => {
+          console.log('授权失败', res)
+        }
+      })
     },
-
-    /**
-     * Lifecycle function--Called when page show
-     */
-    onShow() {
-
-    },
-
-    /**
-     * Lifecycle function--Called when page hide
-     */
-    onHide() {
-
-    },
-
-    /**
-     * Lifecycle function--Called when page unload
-     */
-    onUnload() {
-
-    },
-
-    /**
-     * Page event handler function--Called when user drop down
-     */
-    onPullDownRefresh() {
-
-    },
-
-    /**
-     * Called when page reach bottom
-     */
-    onReachBottom() {
-
-    },
-
-    /**
-     * Called when user click on the top right corner to share
-     */
-    onShareAppMessage() {
-
+    // 退出登录
+    loginOut() {
+      this.setData({
+        userInfo: ''
+      })
+      wx.setStorageSync('user', null)
     }
-})
+  })
+  
