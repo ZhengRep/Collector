@@ -2,7 +2,9 @@
     "pages": [
         "pages/trends/trends",
         "pages/me/me",
-        "pages/func/func"
+        "pages/func/func",
+        "pages/me/hisWills/histWills",
+        "pages/me/thumbWills/thumbWills"
     ],
     "window": {
         "backgroundColor": "#F6F6F6",
@@ -11,33 +13,32 @@
         "navigationBarTitleText": "",
         "navigationBarTextStyle": "black"
     },
-
     "tabBar": {
-        "color": "#bfbfbf",
+        "color": "#666666",
         "selectedColor": "#707070",
         "backgroundColor": "#ffffff",
         "borderStyle": "black",
         "list": [
-          {
-            "pagePath": "pages/trends/trends",
-            "iconPath": "images/Tabbar/trends.png",
-            "selectedIconPath": "images/Tabbar/trends_s.png",
-            "text": "热门"
-          },
-          {
-            "pagePath": "pages/func/func",
-            "iconPath": "images/Tabbar/func.png",
-            "selectedIconPath": "images/Tabbar/func_s.png",
-            "text": "发起"
-          },
-          {
-            "pagePath": "pages/me/me",
-            "iconPath": "images/Tabbar/me.png",
-            "selectedIconPath": "images/Tabbar/me_s.png",
-            "text": "我的"
-          }
+            {
+                "pagePath": "pages/trends/trends",
+                "iconPath": "images/Tabbar/trends.png",
+                "selectedIconPath": "images/Tabbar/trends_s.png",
+                "text": "热门"
+            },
+            {
+                "pagePath": "pages/func/func",
+                "iconPath": "images/Tabbar/func.png",
+                "selectedIconPath": "images/Tabbar/func_s.png",
+                "text": "发起"
+            },
+            {
+                "pagePath": "pages/me/me",
+                "iconPath": "images/Tabbar/me.png",
+                "selectedIconPath": "images/Tabbar/me_s.png",
+                "text": "我的"
+            }
         ]
-      },
+    },
     "sitemapLocation": "sitemap.json",
     "style": "v2"
 }

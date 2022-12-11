@@ -1,18 +1,18 @@
-// pages/trends/trends.js
-const app = getApp();
+// pages/me/thumbWills/thumbWills.js
 Page({
 
     /**
      * Page initial data
      */
     data: {
+
     },
 
     /**
      * Lifecycle function--Called when page load
      */
     onLoad(options) {
-        
+
     },
 
     /**

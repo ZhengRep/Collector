@@ -1,21 +1,64 @@
 // pages/me/me.js
-const app = getApp()
+const app = getApp();
 Page({
 
     /**
      * Page initial data
      */
     data: {
-        
+        hasUserInfo:false,
+        userInfo:{
+            avatarUrl: "",
+            nickName: ""
+        }
     },
 
     /**
      * Lifecycle function--Called when page load
      */
     onLoad(options) {
-
+      if(app.globalData.hasUserInfo){
+          this.setData({
+              hasUserInfo: true,
+              'userInfo.avatarUrl': app.globalData.avatarUrl,
+              'userInfo.nickName': app.globalData.nickName,
+          })
+      }
     },
 
+    loginClick(){
+        wx.getUserProfile({
+          desc: '用于完善用户信息',
+          success:(res)=>{
+              console.log(res);
+              this.setData({
+                  hasUserInfo: true,
+                  ['userInfo.avatarUrl']: res.userInfo.avatarUrl,
+                  ['userInfo.nickName']: res.userInfo.nickName,
+              })
+            app.globalData.avatarUrl = res.userInfo.avatarUrl;
+            app.globalData.nickName = res.userInfo.nickName;
+            app.globalData.hasUserInfo = true;
+            //storage userInfo
+            wx.setStorage({
+                key: 'userInfo',
+                data: this.data.userInfo,
+            })
+            console.log("Fisrt set globalData:", app.globalData);
+        }
+        })
+    },
+    gotoHisWillsPage(){
+        wx.navigateTo({
+          url: './hisWills/histWills',
+        })
+    },
+
+    gotoThumbWillsPage(){
+        wx.navigateTo({
+          url: './thumbWills/thumbWills',
+        })
+    },
     /**
      * Lifecycle function--Called when page is initially rendered
      */
@@ -27,7 +70,7 @@ Page({
      * Lifecycle function--Called when page show
      */
     onShow() {
-
+        
     },
 
     /**
