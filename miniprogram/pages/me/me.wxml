@@ -2,12 +2,12 @@
     <view>
         <view class="login" wx:if="{{!hasUserInfo}}" bindtap="loginClick">
            <image src="../../images/wx.png" 
-           style="width: 50px; height: 50px;"></image>
+           style=" width: 50px; height: 50px;"></image>
            <view>点击登录</view>
         </view>
         <view class="info" wx:else>
-            <image src="{{userInfo.avatarUrl}}" style="height: 50px; width: 50px;"></image>
-            <view>{{userInfo.nickName}}</view>
+            <image src="{{userInfo.avatarUrl}}" style="height: 60px; width: 60px; border-radius: 50%;"></image>
+            <view class="nick-text">{{userInfo.nickName}}</view>
         </view>
     </view>
     <view class="utility">

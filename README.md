@@ -21,3 +21,34 @@
 5. 根据点赞数（即投票数）和意愿发起时间对意愿列表进行排序，对超过一定点赞数的意愿进行置顶排序，并标记为热门意愿。
 
 6. 当无新点赞7日后，非热门意愿自动删除，热门意愿统计存储于往期热门意愿中。
+
+## 数据库
+
+table: wills
+
+```json
+{
+    'appId':'',
+    'stuId':'',
+    'name': '',
+    'willDec': '',
+    'date':'', //year-month-day hour:minute 
+    'audit': 0, //0->not audit, 1->is ok(autony post wills, audited anony post wills)
+    'type': '', //0->anony, 1->autony
+    'hot':0, //0->no hot, 1 had hot 
+    'thumbNum': 2
+}
+```
+
+table: thumbs
+
+```json
+{
+    'appId': '',
+    'thumbId': 1
+}
+```
+
+### rollback log:
+
+12/11/2022 8:18  empty

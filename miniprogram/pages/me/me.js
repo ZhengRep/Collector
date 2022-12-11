@@ -44,7 +44,6 @@ Page({
                 key: 'userInfo',
                 data: this.data.userInfo,
             })
-            console.log("Fisrt set globalData:", app.globalData);
         }
         })
     },

@@ -1,2 +1,10 @@
-<!--pages/func/func.wxml-->
-<text>pages/func/func.wxml</text>
+<view class="container">
+    <view class="item" bindtap="gotoAutonyPostWill">
+        <image class="img" src="../../images/autonym.svg"></image>
+        <text>实名发起</text>
+    </view>
+    <view class="item" bindtap="gotoAnonyPostWill">
+        <image class="img" src="../../images/anonymous.svg"></image>
+        <text>匿名发起</text>
+    </view>
+</view>

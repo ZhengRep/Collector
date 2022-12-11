@@ -1,5 +1,4 @@
-// pages/func/func.js
-const app = getApp();
+// pages/func/anony/anony.js
 Page({
 
     /**
@@ -14,32 +13,6 @@ Page({
      */
     onLoad(options) {
 
-    },
-    //匿名发起
-    gotoAnonyPostWill(){
-        if(app.globalData.hasUserInfo){
-            wx.navigateTo({
-              url: './anony/anony',
-            })  
-        }
-        else{
-            wx.showToast({
-              title: '请先登录',
-            })
-        }
-    },
-    //实名发起
-    gotoAutonyPostWill(){
-        if(app.globalData.hasUserInfo){
-            wx.navigateTo({
-              url: './autony/autony',
-            })  
-        }
-        else{
-            wx.showToast({
-              title: '请先登录',
-            })
-        }
     },
 
     /**

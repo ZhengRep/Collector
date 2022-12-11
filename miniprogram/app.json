@@ -4,7 +4,9 @@
         "pages/me/me",
         "pages/func/func",
         "pages/me/hisWills/histWills",
-        "pages/me/thumbWills/thumbWills"
+        "pages/me/thumbWills/thumbWills",
+        "pages/func/anony/anony",
+        "pages/func/autony/autony"
     ],
     "window": {
         "backgroundColor": "#F6F6F6",

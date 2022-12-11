@@ -1,45 +1,45 @@
-// pages/func/func.js
+// pages/func/autony/autony.js
 const app = getApp();
+import utils, { formatTime } from '../../../utils/utils'
 Page({
 
     /**
      * Page initial data
      */
     data: {
+        record:{
+            appId: app.globalData.appId,
+            stuId: '',
+            name: '',
+            willDec: "",
+            date: '',
+            audit: true,
+            type: 1,
+            hot: false,
+            thumbNum: 0
+        }
+    },
+    getNameValue(e){
+        this.setData({'record.name': e.detail.value});
+    },
+    getStuIdValue(e){
+        this.setData({'record.stuId': e.detail.value});
+    },
+    getWillDecValue(e){
+        this.setData({'record.willDec': e.detail.value});
+    },
+    submit(){
+        //get time
+        var timeStamp = new Date();
+        var time = formatTime(timeStamp);
+        console.log(time);
 
     },
-
     /**
      * Lifecycle function--Called when page load
      */
     onLoad(options) {
 
-    },
-    //匿名发起
-    gotoAnonyPostWill(){
-        if(app.globalData.hasUserInfo){
-            wx.navigateTo({
-              url: './anony/anony',
-            })  
-        }
-        else{
-            wx.showToast({
-              title: '请先登录',
-            })
-        }
-    },
-    //实名发起
-    gotoAutonyPostWill(){
-        if(app.globalData.hasUserInfo){
-            wx.navigateTo({
-              url: './autony/autony',
-            })  
-        }
-        else{
-            wx.showToast({
-              title: '请先登录',
-            })
-        }
     },
 
     /**

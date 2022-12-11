@@ -1,0 +1,18 @@
+/* pages/func/autony/autony.wxss */
+.input{
+    margin-top: 2px;
+    border: 0.2px solid #666666;
+    width: 100%;
+}
+
+.item{
+    margin-top: 10px;
+}
+
+.items{
+    width: 80%;
+}
+
+.submit{
+    margin-top: 60px;
+}
