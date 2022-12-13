@@ -1,9 +1,13 @@
+const { envList } = require("./envList");
+
 // app.js
 App({
     globalData:{
         hasUserInfo: false,
         nickName:"",
         avatarUrl:"",
+        openId: '',
+        envId: "cloud1-4gvdt5akf6c97f23",
     },
 
     onLaunch: function () {
@@ -12,6 +16,7 @@ App({
         } else {
         wx.cloud.init({
             traceUser: true,
+            env: "cloud1-4gvdt5akf6c97f23",
         });
         }
         this.getStoragedUserInfo();
@@ -25,6 +30,7 @@ App({
                 success:(res)=>{
                     this.globalData.avatarUrl = res.data.avatarUrl,
                     this.globalData.nickName = res.data.nickName,
+                    this.globalData.openId = res.data.openId,
                     this.globalData.hasUserInfo = true
                     console.log('globalData', this.globalData);
                 }

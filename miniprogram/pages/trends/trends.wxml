@@ -1,2 +1,5 @@
 <!--pages/trends/trends.wxml-->
-<text>pages/trends/trends.wxml</text>
+<view class="container">
+    <tabs tabs="{{tabs}}" class="tabs" activeTab="{{activeTab}}" bindtabclick="onTabClick" bindchange="onChange"></tabs>
+
+</view>

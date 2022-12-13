@@ -13,5 +13,6 @@
     <view class="utility">
         <view bindtap="gotoHisWillsPage">历史意愿</view>
         <view bindtap="gotoThumbWillsPage">点赞意愿</view>
+        <view wx:if="{{isAdmin}}" bindtap="gotoAuditWillsPage">匿名意愿</view>
     </view>
 </view>

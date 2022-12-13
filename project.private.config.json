@@ -83,6 +83,13 @@
                         "enabled": false,
                         "pages": []
                     }
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/func/anony/anony",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }

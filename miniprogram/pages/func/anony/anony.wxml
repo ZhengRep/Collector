@@ -1,3 +1,13 @@
+<!--pages/func/autony/autony.wxml-->
 <view class="container">
-    <view class=""></view>
+        <view class="will-dec items">
+        <view class="item">
+            <text>意愿描述</text>
+            <textarea class='input' bindinput="getWillDesValue" style='height: 100px;;' placeholder="请输入意愿" maxlength="1000"/>
+        </view>
+    </view>
+    <view class="submit">
+        <button class='item' bindtap="submit" type="default">提交</button>
+    </view>
 </view>
+

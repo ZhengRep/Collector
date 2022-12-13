@@ -28,10 +28,10 @@ table: wills
 
 ```json
 {
-    'appId':'',
+    'openId':'',
     'stuId':'',
     'name': '',
-    'willDec': '',
+    'willDes': '',
     'date':'', //year-month-day hour:minute 
     'audit': 0, //0->not audit, 1->is ok(autony post wills, audited anony post wills)
     'type': '', //0->anony, 1->autony
@@ -39,6 +39,8 @@ table: wills
     'thumbNum': 2
 }
 ```
+
+![image-20221212112056986](README.assets/image-20221212112056986.png)
 
 table: thumbs
 

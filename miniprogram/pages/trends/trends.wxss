@@ -1,1 +1,5 @@
-/* pages/trends/trends.wxss */
+.tabs{
+	height: 30px;
+	width: 100%;
+	overflow: hidden;
+}

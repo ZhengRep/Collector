@@ -6,7 +6,9 @@
         "pages/me/hisWills/histWills",
         "pages/me/thumbWills/thumbWills",
         "pages/func/anony/anony",
-        "pages/func/autony/autony"
+        "pages/func/autony/autony",
+        "pages/me/auditWills/auditWills",
+        "component/tabs/tabs"
     ],
     "window": {
         "backgroundColor": "#F6F6F6",

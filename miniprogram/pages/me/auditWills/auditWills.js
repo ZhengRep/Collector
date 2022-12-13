@@ -1,36 +1,18 @@
-// pages/trends/trends.js
-const app = getApp();
+// pages/me/auditWills/auditWills.js
 Page({
 
     /**
      * Page initial data
      */
     data: {
-        tabs:[{id:0, title: '热门榜'}, {id:1, title: '最新榜'}],
-        activeTab: 0, 
-
 
     },
-    onTabClick(e) {
-        console.log("onTabClick");
-        const index = e.detail.index
-        this.setData({ 
-          activeTab: index 
-        })
-      },
-    
-      onChange(e) {
-        console.log("onChange");
-        const index = e.detail.index
-        this.setData({ 
-          activeTab: index 
-        })
-      },
+
     /**
      * Lifecycle function--Called when page load
      */
     onLoad(options) {
-        
+
     },
 
     /**

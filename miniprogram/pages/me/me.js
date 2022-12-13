@@ -9,14 +9,16 @@ Page({
         hasUserInfo:false,
         userInfo:{
             avatarUrl: "",
-            nickName: ""
-        }
+            nickName: "",
+            openId: '',
+        },
+        isAdmin: false,
     },
 
     /**
      * Lifecycle function--Called when page load
      */
-    onLoad(options) {
+    onLoad() {
       if(app.globalData.hasUserInfo){
           this.setData({
               hasUserInfo: true,
@@ -24,9 +26,13 @@ Page({
               'userInfo.nickName': app.globalData.nickName,
           })
       }
+
+      //check is admin
+      
     },
 
     loginClick(){
+
         wx.getUserProfile({
           desc: '用于完善用户信息',
           success:(res)=>{
@@ -39,23 +45,45 @@ Page({
             app.globalData.avatarUrl = res.userInfo.avatarUrl;
             app.globalData.nickName = res.userInfo.nickName;
             app.globalData.hasUserInfo = true;
-            //storage userInfo
-            wx.setStorage({
-                key: 'userInfo',
-                data: this.data.userInfo,
+            
+            //get openId
+            wx.cloud.callFunction({
+                name: 'quickstartFunctions',
+                config: {
+                    env: app.globalData.envId
+                },
+                data: {
+                    type: 'getOpenId'
+                }
+            }).then((resp) => {
+                this.setData({
+                     'userInfo.openId': resp.result.openid
+                });
+                app.globalData.openId = resp.result.openId;
+                //storage userInfo
+                wx.setStorage({
+                    key: 'userInfo',
+                    data: this.data.userInfo,
+                })
             })
+    
         }
         })
+    
     },
     gotoHisWillsPage(){
         wx.navigateTo({
           url: './hisWills/histWills',
         })
     },
-
     gotoThumbWillsPage(){
         wx.navigateTo({
           url: './thumbWills/thumbWills',
+        })
+    },
+    gotoAuditWillsPage(){
+        wx.navigateTo({
+          url: './auditWills/auditWills',
         })
     },
     /**
