@@ -28,3 +28,13 @@ page {
   justify-content: flex-start;
   color: #666666
 }
+
+.empty-tip{
+   margin-top: 20px;
+   text-align: center;
+}
+
+.empty-img{
+    width: 30px;
+    height: 30px;
+}

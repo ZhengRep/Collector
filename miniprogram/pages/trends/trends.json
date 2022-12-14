@@ -1,6 +1,5 @@
 {
     "usingComponents": {
-      "tabs": "../../component/tabs/tabs"
     },
     "navigationBarTitleText": ""
 }

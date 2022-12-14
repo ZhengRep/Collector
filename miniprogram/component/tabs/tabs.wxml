@@ -1,17 +1,2 @@
 <!--component/tabs/tabs.wxml-->
-<view class="tabs-wrapper">
-    <view class="tabs-bar-wrapper">
-        <scroll-view scroll-y="true" class="scroll-view-H" scroll-into-view="item_{{currentView}}">
-            <view wx:for="{{tabs}}" wx:key="title" id="item_{{index}}" class="tabs-bar-item" style="color: {{activeTab === index ? '#707070' : '#666666'}};" bindtap="handleTabClick" data-index="{{index}}">
-                <view class="tabs-bar-title">
-                    <text>{{item.title}}</text> 
-                </view>
-            </view>
-        </scroll-view>
-    </view>
-    <swiper class="tabs-content-wrapper">
-       <swiper-item wx:for="{{tabs}}" wx:key="title">
-        <slot name="tab-content-{{index}}"></slot>
-       </swiper-item> 
-    </swiper>
-</view>
+<text>component/tabs/tabs.wxml</text>

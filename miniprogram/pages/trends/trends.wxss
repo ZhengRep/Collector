@@ -1,5 +1,59 @@
-.tabs{
-	height: 30px;
+.tab-bars-wrapper{
 	width: 100%;
-	overflow: hidden;
+    display: flex;
+    height: 30px;
+	line-height: 30px;
+	border-bottom: 0.5px solid #707070;
 }
+
+.tab-bars-item{
+	width: 50%;
+	text-align: center;
+}
+
+.active{
+	color: #110202;
+	font-size: 16px;
+}
+
+.swiper{
+    width: 100%;
+    height: calc(100vh - 31px);
+}
+
+.scroll-view-wrapper{
+    height: calc(100vh - 31px);
+}
+
+.scroll-item{
+    width: 90%;
+    margin: 20px auto;
+    border-bottom: 0.5px solid #bfbfbf;
+}
+
+.user-item{
+    margin: 4px auto;
+}
+
+.user-info{
+    display: flex;
+}
+
+.stu-id{
+    margin-left: 10px;
+}
+
+.thumb-img{
+    width: 20px;
+    height: 20px;
+    margin-right: 20px;
+}
+
+.user-interaction{
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+

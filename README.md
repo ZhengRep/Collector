@@ -33,9 +33,9 @@ table: wills
     'name': '',
     'willDes': '',
     'date':'', //year-month-day hour:minute 
-    'audit': 0, //0->not audit, 1->is ok(autony post wills, audited anony post wills)
-    'type': '', //0->anony, 1->autony
-    'hot':0, //0->no hot, 1 had hot 
+    'audit': true, //false->not audit, true->is ok(autony post wills, audited anony post wills)
+    'type': 0, //0->anony, 1->autony
+    'hot':true, //false->no hot, true had hot 
     'thumbNum': 2
 }
 ```
@@ -54,3 +54,11 @@ table: thumbs
 ### rollback log:
 
 12/11/2022 8:18  empty
+
+```js
+ .where(event.where)
+       .orderBy(event.orderBy)
+       .skip(evnet.skip)
+       .limit(2)
+```
+
