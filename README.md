@@ -56,9 +56,27 @@ table: thumbs
 12/11/2022 8:18  empty
 
 ```js
- .where(event.where)
-       .orderBy(event.orderBy)
-       .skip(evnet.skip)
-       .limit(2)
+try{
+    await db.collection('thumbs').add({
+        data:{
+              openId: event.openId,
+              thumbId: event.thumbId,
+          }
+    })
+    
+    return await db.collection('wills').where({
+        _id: event.thumbId
+    }).update({
+        data:{
+            thumbNum: _.inc(1)
+        }
+    })
+
+   }catch(e){
+       return{
+           success: false,
+           errMsg: e,
+       }
+   }
 ```
 

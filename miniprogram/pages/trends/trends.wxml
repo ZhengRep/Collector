@@ -7,7 +7,7 @@
     </view>
     <swiper class="swiper" current="{{activeTab}}" easing-function="linear" bindchange="onChangeSwipper">
         <swiper-item>
-            <view wx:if="{{listTable[0] != []}}" class="swiper-item hot-list">
+            <view wx:if="{{listTable[0].length != 0}}" class="swiper-item hot-list">
                 
                 
             </view>
@@ -17,9 +17,9 @@
             </view>
         </swiper-item>
         <swiper-item>
-            <view wx:if="{{listTable[1] != []}}" class="swiper-item new-list">
+            <view wx:if="{{listTable[1].length != 0}}" class="swiper-item new-list">
                 <scroll-view scroll-y="true" class="scroll-view-wrapper">
-                    <view class="scroll-item" wx:for="{{listTable[1]}}" wx:key="*this">
+                    <view class="scroll-item" wx:for="{{listTable[1]}}" wx:key="title">
                         <view class="user-info user-item">
                             <view class="name">{{item.name}}</view>
                             <view class="stu-id">{{item.stuId}}</view>
@@ -29,8 +29,11 @@
                         </view>
                         <view class="user-interaction user-item">
                             <view class="user-date">{{item.date}}</view>
-                            <image wx:if="!{{item.hasThumb}}" bindtap="onThumb" data-index="{{index}}" class="thumb-img" src="../../images/thumb.svg"></image>
-                            <image wx:else class="thumb-img" bindtap="onCancleThumb" data-index="{{index}}" src="../../images/thumbed.svg"></image>
+                            <view style="display: flex;">
+                                <view class="thumb-num">{{item.thumbNum}}</view>
+                                <image wx:if="!{{item.hasThumb}}" bindtap="onThumb" data-index="{{index}}" class="thumb-img" src="../../images/thumb.svg"></image>
+                                <image wx:else class="thumb-img" bindtap="onCancleThumb" data-index="{{index}}" src="../../images/thumbed.svg"></image>
+                            </view>
                         </view>
                     </view>
                 </scroll-view>

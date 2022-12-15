@@ -6,8 +6,6 @@ cloud.init({
 
 const db = cloud.database;
 
-exports.main = async (event, context)=>{
-    //associate thumbs and wills
-    
-    //increment thumb num
+exports.main = async (evnet, context)=>{
+
 }

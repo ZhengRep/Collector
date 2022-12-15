@@ -30,6 +30,10 @@ Page({
      * Lifecycle function--Called when page load
      */
     onLoad(options) {
+        //test
+        console.log('test', this.data.test);
+        
+
          //get hot list and new list
          //this.getDataList('hotList', 'wills', {'hot': false}, 'thumbNum', this.data.hotSkip);
          this.getDataList('newList', 'wills', {'audit': true}, 'date', this.data.newSkip);
@@ -70,9 +74,11 @@ Page({
             console.log(res);
             if(listName == 'hostList'){
                 this.setData({'listTable[0]': res.result.data, hotSkip: this.data.hotSkip+this.data.pageNum})
+                //add hasThumbField
             }
             else if(listName == 'newList'){
                 this.setData({'listTable[1]': res.result.data, newSkip: this.data.newSkip+this.data.pageNum})
+                //add hasThumbField
             }
             wx.hideLoading();
         }).catch((e)=>{
@@ -85,6 +91,10 @@ Page({
         })
     },
     onThumb(e){
+        this.setData({test: true});
+        console.log('test', this.data.test);
+        return;
+        //test add new field
         var index = e.currentTarget.dataset.index;
         //update wills and create thumbs
         wx.cloud.callFunction({
@@ -93,20 +103,16 @@ Page({
                 envId: app.globalData.envId,
             },
             data:{
-                type: 'updateRecord',
-                database: 'wills',
-                where: {
-                     _id: this.data.listTable[this.data.activeTab][index]._id,
-                },
-                update: {
-                    data:{
-                        thumbNum:  this.data.listTable[this.data.activeTab][index].thumbNum+1,
-                    }
-                }
+                type: 'addThumbNum',
+                openId: app.globalData.openId,
+                thumbId: this.data.listTable[this.data.activeTab][index]._id,
             }
         }).then((res)=>{
             console.log(res);
-            this.setData({['listTable[this.data.activeTab][index].hasThumb']: true})
+            this.setData({
+                [`listTable[${this.data.activeTab}][${index}].hasThumb`]: true,
+                [`listTable[${this.data.activeTab}][${index}].thumbNum`]: this.data.listTable[this.data.activeTab][index].thumbNum + 1,
+            })
         }).catch((e)=>{
             console.log(e);
             wx.showToast({

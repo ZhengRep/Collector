@@ -54,6 +54,10 @@
     justify-content: space-between;
 }
 
+.thumb-num{
+    margin-right: 10px;
+}
+
 
 
 
