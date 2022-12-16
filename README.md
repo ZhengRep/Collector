@@ -78,5 +78,77 @@ try{
            errMsg: e,
        }
    }
+
+//getDataListOfThumb:
+exports.main = async (event, context)=>{
+    return await db.collection('wills').aggregate()
+    .lookup({
+        from: 'thumbs',
+        let:{
+            openId: event.openId,
+            thumbId: '$thumbId',
+        },
+        pipeline:$.pipeline()
+        .match({
+            _id: $$thumbId,
+        })
+        .project({
+           value: true, 
+           openId: false,
+        })
+        .done(),
+        as: 'hasThumb',
+    })
+    .end()
+}
+
+ getDataList(listName, database, where, orderBy, skip){
+        wx.showLoading({
+            title: '正在加载',
+            mask: true,
+        }) 
+        wx.cloud.callFunction({
+            name: 'quickstartFunctions',
+            config:{
+                envId: app.globalData.envId,
+            },
+            data:{
+                type: 'getDataList',
+                database: database,
+                where: where,
+                orderBy: orderBy,
+                skip: skip,
+            }
+        }).then((res)=>{
+            console.log(res);
+            if(listName == 'hostList'){
+                this.setData({'listTable[0]': res.result.data, hotSkip: this.data.hotSkip+this.data.pageNum})
+                //add hasThumbField
+            }
+            else if(listName == 'newList'){
+                this.setData({'listTable[1]': res.result.data, newSkip: this.data.newSkip+this.data.pageNum})
+                //add hasThumbField
+            }
+            wx.hideLoading();
+        }).catch((e)=>{
+            console.log(e);
+            wx.hideLoading();
+            wx.showToast({
+              title: '请求错误',
+              icon: 'error',
+            })
+        })
+    },
 ```
+
+## 测试阶段
+
+trends 测试：
+
+| 测试名称               | 测试方法 | 是否通过 |
+| ---------------------- | -------- | -------- |
+| 没有数据请求（第一次） |          |          |
+| 加载更多，没有数据     |          |          |
+| 分页功能               |          |          |
+| 刷新功能               |          |          |
 

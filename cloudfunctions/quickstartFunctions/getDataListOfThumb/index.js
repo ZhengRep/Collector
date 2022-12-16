@@ -5,15 +5,35 @@ cloud.init({
 })
 
 const db = cloud.database();
-const $ = db.command.aggregate
+const $ = db.command.aggregate;
+const _ = db.command;
 /*
 event:{
     openId, 
 }
 */
-exports.main = async (evnet, context)=>{
-    // db.collection('wills').aggregate()
-    // .lookup({
-    //     from: ''
-    // })
+exports.main = async (event, context)=>{
+    return await db.collection('wills')
+    .aggregate()
+    .match(event.match)
+    .sort(event.sort)
+    .skip(event.skip)
+    .limit(event.limit)
+    .lookup({
+        from: 'thumbs',
+        let:{
+            id: '$_id',
+        },
+        pipeline: $.pipeline().match(_.expr($.and([
+            $.eq(['$openId', event.openId]),
+            $.eq(['$thumbId', '$$id'])
+        ])))//openId = event.openId, thumbId = _id
+        .project({
+            openId:0,
+            thumbId:0
+        })
+        .done(),
+        as: 'hasThumb',
+    })
+    .end()
 }
