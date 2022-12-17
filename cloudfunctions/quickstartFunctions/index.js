@@ -6,6 +6,8 @@ const addThumbNum = require('./addThumbNum/index')
 const cancleThumb = require('./cancleThumb/index')
 const getDataListOfThumb = require('./getDataListOfThumb/index')
 const deleteWill = require('./deleteWill/index')
+const getDataListThumbed = require('./getDataListThumbed/index')
+
 // 云函数入口函数
 exports.main = async (event, context) => {
   switch (event.type) {
@@ -25,6 +27,8 @@ exports.main = async (event, context) => {
         return await getDataListOfThumb.main(event, context);
     case 'deleteWill':
         return await deleteWill.main(event, context);
+    case 'getDataListThumbed':
+        return await getDataListThumbed.main(event, context);
     default:
         return 'no function';
   }

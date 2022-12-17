@@ -97,6 +97,13 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/me/thumbWills/thumbWills",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }
