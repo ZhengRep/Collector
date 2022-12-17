@@ -63,7 +63,7 @@ Page({
         })
     },
     getNewData(){
-        if(this.data.noMoreHisData){
+        if(this.data.noMoreThumbData){
             wx.showToast({
               title: '没有更多数据了',
               icon: 'none',
