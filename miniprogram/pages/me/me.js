@@ -59,7 +59,7 @@ Page({
                 this.setData({
                      'userInfo.openId': resp.result.openid
                 });
-                app.globalData.openId = resp.result.openId;
+                app.globalData.openId = resp.result.openid;
                 //storage userInfo
                 wx.setStorage({
                     key: 'userInfo',
