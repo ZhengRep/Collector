@@ -17,7 +17,9 @@ Page({
      * Lifecycle function--Called when page load
      */
     onLoad(options) {
-        this.getDataListOfThumb('正在加载', {openId: app.globalData.openId}, {date: -1}, this.data.thumbSkip)
+        if(app.globalData.hasUserInfo){
+            this.getDataListOfThumb('正在加载', {openId: app.globalData.openId}, {date: -1}, this.data.thumbSkip)
+        }
     },
     getDataListOfThumb(showLoadingTitle, match, sort, skip){
         wx.showLoading({

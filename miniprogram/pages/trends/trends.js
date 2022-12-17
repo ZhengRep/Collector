@@ -139,6 +139,13 @@ Page({
         }
     },
     onThumb(e){
+        if(!app.globalData.hasUserInfo){
+            wx.showToast({
+              title: '请先登录',
+              icon: 'none'
+            })
+            return;
+        }
         //test add new field
         var index = e.currentTarget.dataset.index;
         console.log('thumb index', index);
@@ -168,6 +175,13 @@ Page({
         })
     },
     onCancleThumb(e) {
+        if(!app.globalData.hasUserInfo){
+            wx.showToast({
+              title: '请先登录',
+              icon: 'none'
+            })
+            return;
+        }
         var index = e.currentTarget.dataset.index;
         //update wills and create thumbs
         console.log('cancle thumb', index);

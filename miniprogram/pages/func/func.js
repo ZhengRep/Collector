@@ -25,6 +25,7 @@ Page({
         else{
             wx.showToast({
               title: '请先登录',
+              icon: 'none'
             })
         }
     },
@@ -38,6 +39,7 @@ Page({
         else{
             wx.showToast({
               title: '请先登录',
+              icon: 'none'
             })
         }
     },
