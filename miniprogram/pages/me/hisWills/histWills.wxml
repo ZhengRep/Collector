@@ -1,7 +1,7 @@
 <!--pages/me/hisWills/histWills.wxml-->
 <view class="container">
-    <scroll-view class="scroll-view" scroll-y="{{true}}" bindscrolltolower="getNewData">
-        <view class="scroll-item" wx:for="{{listTable[0]}}" wx:key="title">
+    <scroll-view class="scroll-view" scroll-y="{{true}}" refresher-enabled="{{true}}" refresher-triggered="{{refresherTrigger}}" bindrefresherrefresh="onScrollRefresh" bindscrolltolower="getNewData">
+        <view wx:if="{{hisWills.length}}" class="scroll-item" wx:for="{{hisWills}}" wx:key="title">
             <view wx:if="{{item.name.length}}" class="user-info user-item">
                 <view class="name">{{item.name}}</view>
                 <view class="stu-id">{{item.stuId}}</view>
@@ -14,12 +14,36 @@
             </view>
             <view class="user-interaction user-item">
                 <view class="user-date">{{item.date}}</view>
-                <view style="display: flex;">
+                <view class="imgs-item" style="display: flex;">
                     <view class="thumb-num">{{item.thumbNum}}</view>
-                    <image wx:if="{{item.hasThumb.length == 0}}" bindtap="onThumb" data-index="{{index}}" class="thumb-img" src="../../images/thumb.svg"></image>
-                    <image wx:else class="thumb-img" bindtap="onCancleThumb" data-index="{{index}}" src="../../images/thumbed.svg"></image>
+                    <image wx:if="{{item.hasThumb.length == 0}}" bindtap="onThumb" data-index="{{index}}" class="thumb-img" src="../../../images/thumb.svg"></image>
+                    <image wx:else class="thumb-img" bindtap="onCancleThumb" data-index="{{index}}" src="../../../images/thumbed.svg"></image>
+                </view>
+            </view>
+            <view class="his-interaction">
+                <view class="audit-imgs" wx:if="{{!item.type}}">
+                    <view class="imgs-item" wx:if="{{item.audit == 0}}">
+                        <image class="audit-img audit-rejected" src="../../../images/audit_rejected.svg"></image>
+                        <text>审核未通过</text>
+                    </view>
+                    <view class="imgs-item" wx:if="{{item.audit == 1}}">
+                        <image class="audit-img audit-waiting" src="../../../images/audit_waiting.svg"></image>
+                        <text>等待审核</text>
+                    </view>
+                    <view class="imgs-item" wx:if="{{item.audit == 2}}">
+                        <image class="audit-img audit-rejected" src="../../../images/audit_passed.svg"></image>
+                        <text>审核通过</text>
+                    </view>
+                </view>
+                <view wx:else></view>
+                <view class="delete-button">
+                    <button size="mini" bindtap="deleteWill" data-index="{{index}}" plain="{{true}}" type="warn">删除</button>
                 </view>
             </view>
         </view> 
+        <view wx:if="{{!hisWills.length}}" class="empty-tip">
+            <image class="empty-img" src="../../../images/no_data.svg"/>
+            <text style='display: block; font-size: 13px;'>暂无数据</text>
+        </view>
     </scroll-view>
 </view>

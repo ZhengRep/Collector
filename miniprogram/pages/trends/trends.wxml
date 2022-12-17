@@ -10,7 +10,7 @@
             <view wx:if="{{listTable[0].length != 0}}" class="swiper-item hot-list">
                 <scroll-view scroll-y="true" refresher-enabled="{{true}}" refresher-triggered="{{refresherTrigger}}" bindrefresherrefresh="onScrollRefresh" bindscrolltolower="getNewData" class="scroll-view-wrapper">
                     <view class="scroll-item" wx:for="{{listTable[0]}}" wx:key="title">
-                        <view wx:if="{{item.name.length}}" class="user-info user-item">
+                        <view wx:if="{{item.type}}" class="user-info user-item">
                             <view class="name">{{item.name}}</view>
                             <view class="stu-id">{{item.stuId}}</view>
                         </view>
@@ -22,7 +22,7 @@
                         </view>
                         <view class="user-interaction user-item">
                             <view class="user-date">{{item.date}}</view>
-                            <view style="display: flex;">
+                            <view style="display: flex; align-items: center;">
                                 <view class="thumb-num">{{item.thumbNum}}</view>
                                 <image wx:if="{{item.hasThumb.length == 0}}" bindtap="onThumb" data-index="{{index}}" class="thumb-img" src="../../images/thumb.svg"></image>
                                 <image wx:else class="thumb-img" bindtap="onCancleThumb" data-index="{{index}}" src="../../images/thumbed.svg"></image>
@@ -52,7 +52,7 @@
                         </view>
                         <view class="user-interaction user-item">
                             <view class="user-date">{{item.date}}</view>
-                            <view style="display: flex;">
+                            <view style="display: flex; align-items: center;">
                                 <view class="thumb-num">{{item.thumbNum}}</view>
                                 <image wx:if="{{!item.hasThumb.length}}" bindtap="onThumb" data-index="{{index}}" class="thumb-img" src="../../images/thumb.svg"></image>
                                 <image wx:else class="thumb-img" bindtap="onCancleThumb" data-index="{{index}}" src="../../images/thumbed.svg"></image>

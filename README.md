@@ -33,7 +33,7 @@ table: wills
     'name': '',
     'willDes': '',
     'date':'', //year-month-day hour:minute 
-    'audit': true, //false->not audit, true->is ok(autony post wills, audited anony post wills)
+    'audit': 0, //1->wait audit 2->pass 0->not pass
     'type': 0, //0->anony, 1->autony
     'hot':true, //false->no hot, true had hot 
     'thumbNum': 2
@@ -145,10 +145,13 @@ exports.main = async (event, context)=>{
 
 trends 测试：
 
-| 测试名称               | 测试方法 | 是否通过 |
-| ---------------------- | -------- | -------- |
-| 没有数据请求（第一次） |          |          |
-| 加载更多，没有数据     |          |          |
-| 分页功能               |          |          |
-| 刷新功能               |          |          |
+| 测试名称                                       | 测试方法 | 是否通过 |
+| ---------------------------------------------- | -------- | -------- |
+| 没有数据请求（第一次）                         |          |          |
+| 加载更多，没有数据                             |          |          |
+| 分页功能                                       |          |          |
+| 刷新功能                                       |          |          |
+| 热门榜请求的数据和最新榜请求的数据不一样？？？ |          |          |
+| 没有登录的逻辑                                 |          |          |
+| trends没有数据，没法刷新                       |          |          |
 

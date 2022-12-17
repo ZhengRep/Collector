@@ -13,7 +13,8 @@ Page({
             name: '',
             willDes: "",
             date: '',
-            audit: true,
+            audit: 2,
+            anony: false,
             type: 1,
             hot: false,
             thumbNum: 0

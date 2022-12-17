@@ -1,1 +1,51 @@
 /* pages/me/hisWills/histWills.wxss */
+.scroll-view{
+    height: 100vh;
+}
+
+.scroll-item{
+    width: 90%;
+    margin: 20px auto;
+    border-bottom: 0.5px solid #bfbfbf;
+}
+
+.user-item{
+    margin: 4px auto;
+}
+
+.user-info{
+    display: flex;
+}
+
+.stu-id{
+    margin-left: 10px;
+}
+
+.thumb-img, .audit-img{
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+}
+
+.user-interaction{
+    display: flex;
+    justify-content: space-between;
+}
+
+.thumb-num{
+    margin-right: 10px;
+}
+
+.his-interaction{
+    padding-top: 5px;
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+ 
+
+.audit-imgs, .imgs-item{
+    display: flex;
+    align-items: center;
+}
+

@@ -26,14 +26,14 @@ Page({
           activeTab: index 
         })
         if(this.data.firstLoadNewList){
-            this.getDataListOfThumb('newList', '正在加载', {'audit': true}, {date: -1}, this.data.newSkip);   
+            this.getDataListOfThumb('newList', '正在加载', {'audit': 2}, {date: -1}, this.data.newSkip);   
             this.setData({firstLoadNewList: false})
         }
     },
     onChangeSwipper(e){
         this.setData({activeTab: e.detail.current});
         if(this.data.firstLoadNewList){
-            this.getDataListOfThumb('newList', '正在加载', {'audit': true}, {date: -1}, this.data.newSkip);   
+            this.getDataListOfThumb('newList', '正在加载', {'audit': 2}, {date: -1}, this.data.newSkip);   
             this.setData({firstLoadNewList: false})
         }
     },
@@ -43,7 +43,7 @@ Page({
      */
     onLoad(options) {
          //get hot list and new list
-         this.getDataListOfThumb('hotList', '正在加载', {'audit': true}, {thumbNum: -1}, this.data.hotSkip);
+         this.getDataListOfThumb('hotList', '正在加载', {'audit': 2}, {thumbNum: -1}, this.data.hotSkip);
     },
 
     /**
@@ -116,25 +116,25 @@ Page({
         })
     },
     getNewData(){
-        if(!this.data.noMoreHotData){
+        if(this.data.noMoreHotData){
             wx.showToast({
               title: '没有更多数据了',
               icon: 'none',
             })
         }else{
             if(!this.data.activeTab){
-                this.getDataListOfThumb('hotList', '加载更多', {'audit': true}, {thumbNum: -1}, this.data.hotSkip);
+                this.getDataListOfThumb('hotList', '加载更多', {'audit': 2}, {thumbNum: -1}, this.data.hotSkip);
             }
         }
 
-        if(!this.data.noMoreNewData){
+        if(this.data.noMoreNewData){
             wx.showToast({
                 title: '没有更多数据了',
                 icon: 'none',
             })
         }else{
             if(this.data.activeTab){
-                this.getDataListOfThumb('newList', '加载更多', {'audit': true}, {date: -1}, this.data.newSkip);   
+                this.getDataListOfThumb('newList', '加载更多', {'audit': 2}, {date: -1}, this.data.newSkip);   
             }
         }
     },
@@ -204,7 +204,7 @@ Page({
                 noMoreHotData: false,
                 refresherTrigger: false,
             })
-            this.getDataListOfThumb('hotList', '正在刷新', {'audit': true}, {thumbNum: -1}, this.data.hotSkip);
+            this.getDataListOfThumb('hotList', '正在刷新', {'audit': 2}, {thumbNum: -1}, this.data.hotSkip);
         }else{
             this.setData({
                [`listTable[1]`]: [],
@@ -212,7 +212,7 @@ Page({
                noMoreNewData: false,
                refresherTrigger: false,
             })
-            this.getDataListOfThumb('newList', '正在刷新', {'audit': true}, {date: -1}, this.data.newSkip);   
+            this.getDataListOfThumb('newList', '正在刷新', {'audit': 2}, {date: -1}, this.data.newSkip);   
         }
 
     },
