@@ -10,6 +10,8 @@ exports.main = async(event, context) => {
        return await db.collection(event.database)
        .where(event.where)
        .orderBy(event.orderBy, 'desc')
+       .skip(event.skip)
+       .limit(event.limit)
        .get()
    }
    catch(e){

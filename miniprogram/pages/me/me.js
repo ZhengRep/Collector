@@ -115,7 +115,7 @@ Page({
     },
     gotoHisWillsPage(){
         wx.navigateTo({
-          url: './hisWills/histWills',
+          url: './hisWills/hisWills',
         })
     },
     gotoThumbWillsPage(){

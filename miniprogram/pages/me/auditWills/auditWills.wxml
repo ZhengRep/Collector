@@ -1,2 +1,20 @@
 <!--pages/me/auditWills/auditWills.wxml-->
-<text>pages/me/auditWills/auditWills.wxml</text>
+<!--pages/me/hisWills/histWills.wxml-->
+<view class="container">
+    <scroll-view class="scroll-view" scroll-y="{{true}}" refresher-enabled="{{true}}" refresher-triggered="{{refresherTrigger}}" bindrefresherrefresh="onScrollRefresh" bindscrolltolower="getNewData">
+        <view wx:if="{{auditWills.length}}" class="scroll-item" wx:for="{{auditWills}}" wx:key="title">
+            <view class="user-des user-item">
+                {{item.willDes}}
+            </view>
+            <view class="audit-interaction">
+                    <button size="mini" bindtap="auditReject" style="margin-right: 10px;" data-index="{{index}}" plain="{{true}}" type="warn">拒绝</button>
+                    <button size="mini" bindtap="auditPass" data-index="{{index}}" plain="{{true}}" type="primary">通过</button>
+            </view>
+        </view> 
+        <view wx:if="{{!auditWills.length}}" class="empty-tip">
+            <image class="empty-img" src="../../../images/no_data.svg"/>
+            <text style='display: block; font-size: 13px;'>暂无数据</text>
+        </view>
+    </scroll-view>
+</view>
+
