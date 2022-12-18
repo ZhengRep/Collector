@@ -44,7 +44,7 @@ Page({
             if(res.result.list.length){
                 this.setData({[`thumbWills`]: [...this.data.thumbWills, ...res.result.list], thumbSkip: this.data.thumbSkip+this.data.pageNum})
             }else{
-                this.setData({noMorethumbData: true});
+                this.setData({noMoreThumbData: true});
                 wx.hideLoading();
                 wx.showToast({
                     title: '没有更多数据了',

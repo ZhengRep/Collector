@@ -19,6 +19,7 @@ Page({
         noMoreNewData: false,
         refresherTrigger: false,
         firstLoadNewList: true,
+        
     },
     clickTab(e) {
         const index = e.currentTarget.dataset.index;

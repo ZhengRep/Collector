@@ -9,22 +9,38 @@ const db = cloud.database();
 exports.main = async (event, context)=>{
    //associate thumbs and wills
    try{
-    await db.collection('thumbs').add({
-        data:{
-              openId: event.openId,
-              thumbId: event.thumbId,
-          }
-    })
-    
-    const _ = db.command;
-    return await db.collection('wills').where({
-        _id: event.thumbId
-    }).update({
-        data:{
-            thumbNum: _.inc(1)
+    var hasThumbNum = db.collection('thumbs').where({
+        openId: event.openId,
+        thumbId: event.thumbId,
+    }).count()
+    .then(res=>{
+        if(res.total){
+            return {
+                success: true,
+                fistThumb: false
+            }
         }
+        db.collection('thumbs').add({
+            data:{
+                  openId: event.openId,
+                  thumbId: event.thumbId,
+              }
+        })
+        
+        const _ = db.command;
+        db.collection('wills').where({
+            _id: event.thumbId
+        }).update({
+            data:{
+                thumbNum: _.inc(1)
+            }
+        }).then(res=>{
+            return {
+                success: true,
+                firstThumb: true
+            }
+        })
     })
-
    }catch(e){
        return{
            success: false,
