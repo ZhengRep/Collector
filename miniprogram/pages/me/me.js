@@ -6,12 +6,10 @@ Page({
      * Page initial data
      */
     data: {
-        hasUserInfo:false,
-        userInfo:{
-            avatarUrl: "",
-            nickName: "",
-            openId: '',
-        },
+        nickName: "",
+        hasUserInfo: app.globalData.hasUserInfo,
+        avatarUrl: app.globalData.defaultAvatarUrl,
+        nickName: app.globalData.defaultNickName,
         isAdmin: false,
     },
 
@@ -19,57 +17,73 @@ Page({
      * Lifecycle function--Called when page load
      */
     onLoad() {
-      if(app.globalData.hasUserInfo){
-          this.setData({
-              hasUserInfo: true,
-              'userInfo.avatarUrl': app.globalData.avatarUrl,
-              'userInfo.nickName': app.globalData.nickName,
-          })
-      }
-
       //check is admin
+      if(!app.globalData.hasUserInfo){
+          this.setNickNameStorage(this.data.nickName);
+          this.setAvatarUrlStorage(this.data.nickName);
+      }
       
+    },
+    onChooseAvatar(e){
+        const {avatarUrl} = e.detail;
+        console.log('avatarUrl', this.data.avatarUrl);
+        this.setData({
+            avatarUrl,
+        })
+        app.globalData.defaultAvatarUrl = this.data.avatarUrl;
+        this.setAvatarUrlStorage(this.data.avatarUrl);
+    },
+    getNickName(e){
+        console.log('nickName', e.detail.value);
+        this.setData({
+            nickName: e.detail.value
+        })
+        this.setNickNameStorage(e.detail.value);
+    },
+    setAvatarUrlStorage(str){
+        wx.setStorage({
+            key: 'Collector-avatarUrl',
+            data: str,
+        })
+    },
+    setNickNameStorage(str){
+        wx.setStorage({
+            key: 'Collector-nickName',
+            data: str,
+        })
     },
 
     loginClick(){
-
-        wx.getUserProfile({
-          desc: '用于完善用户信息',
-          success:(res)=>{
-              console.log(res);
-              this.setData({
-                  hasUserInfo: true,
-                  ['userInfo.avatarUrl']: res.userInfo.avatarUrl,
-                  ['userInfo.nickName']: res.userInfo.nickName,
-              })
-            app.globalData.avatarUrl = res.userInfo.avatarUrl;
-            app.globalData.nickName = res.userInfo.nickName;
-            app.globalData.hasUserInfo = true;
-            
-            //get openId
-            wx.cloud.callFunction({
-                name: 'quickstartFunctions',
-                config: {
-                    env: app.globalData.envId
-                },
-                data: {
-                    type: 'getOpenId'
-                }
-            }).then((resp) => {
-                this.setData({
-                     'userInfo.openId': resp.result.openid
-                });
-                app.globalData.openId = resp.result.openid;
-                //storage userInfo
-                wx.setStorage({
-                    key: 'userInfo',
-                    data: this.data.userInfo,
-                })
-            })
-    
-        }
+        wx.showLoading({
+            title: "正在登录"
         })
-    
+        //get openId
+        wx.cloud.callFunction({
+            name: 'quickstartFunctions',
+            config: {
+                env: app.globalData.envId
+            },
+            data: {
+                type: 'getOpenId'
+            }
+        }).then((res) => {
+            console.log(res);
+            this.setData({hasUserInfo: true})
+            wx.hideLoading();
+            app.globalData.openId = res.result.openid;
+            app.globalData.hasUserInfo = true;
+            //storage userInfo
+            wx.setStorage({
+                key: 'Collector-openId',
+                data: res.result.openid,
+            })
+        }).catch(e=>{
+            wx.hideLoading();
+            wx.showToast({
+              title: '登录失败',
+              icon: 'error'
+            })
+        })
     },
     gotoHisWillsPage(){
         wx.navigateTo({

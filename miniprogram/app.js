@@ -4,9 +4,9 @@ const { envList } = require("./envList");
 App({
     globalData:{
         hasUserInfo: false,
-        nickName:"",
-        avatarUrl:"",
         openId: '',
+        defaultNickName: '微信用户',
+        defaultAvatarUrl: 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0',
         envId: "cloud1-4gvdt5akf6c97f23",
     },
 
@@ -26,14 +26,24 @@ App({
     getStoragedUserInfo(){
         if(!this.globalData.hasUserInfo){
             wx.getStorage({
-                key:'userInfo',
+                key:'Collector-openId',
                 success:(res)=>{
-                    this.globalData.avatarUrl = res.data.avatarUrl,
-                    this.globalData.nickName = res.data.nickName,
-                    this.globalData.openId = res.data.openId,
+                    this.globalData.openId = res.data,
                     this.globalData.hasUserInfo = true
-                    console.log('globalData', this.globalData);
                 }
+            })
+            wx.getStorage({
+                key: 'Collector-avatarUrl',
+                success: (res)=>{
+                    this.globalData.defaultAvatarUrl = res.data
+                }
+            })
+            wx.getStorage({
+                key: 'Collector-nickName',
+                success: (res)=>{
+                    this.globalData.defaultNickName = res.data,
+                    console.log('globalData', this.globalData);
+                }n
             })
         }
     }

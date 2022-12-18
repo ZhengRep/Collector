@@ -6,8 +6,10 @@
            <view>点击登录</view>
         </view>
         <view class="info" wx:else>
-            <image src="{{userInfo.avatarUrl}}" style="height: 60px; width: 60px; border-radius: 50%;"></image>
-            <view class="nick-text">{{userInfo.nickName}}</view>
+            <button class="avatar-wrapper" open-type="chooseAvatar" bind:chooseavatar="onChooseAvatar">
+                <image class="avatar" style="height: 60px; width: 60px; border-radius: 50%;" src="{{avatarUrl}}"></image>
+            </button> 
+            <input class="input-nickname" type="nickname" bindblur="getNickName" placeholder="{{nickName}}"/>
         </view>
     </view>
     <view class="utility">
