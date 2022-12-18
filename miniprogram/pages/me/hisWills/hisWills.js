@@ -25,6 +25,7 @@ Page({
         wx.showLoading({
             title: showLoadingTitle,
             mask: true,
+            duration: 7000,
         }) 
         wx.cloud.callFunction({
             name: 'quickstartFunctions',
@@ -146,7 +147,11 @@ Page({
             content: '是否删除该条意愿',
             success(res){
                 if(res.confirm){
-                    wx.showLoading();
+                    wx.showLoading({
+                        title:"正在删除",
+                        mask: true,
+                        duration: 7000,
+                    });
                     var index = e.currentTarget.dataset.index;
                     console.log('delete', index);
                     wx.cloud.callFunction({

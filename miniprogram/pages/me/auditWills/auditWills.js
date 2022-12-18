@@ -23,6 +23,7 @@ Page({
         wx.showLoading({
             title: showLoadingTitle,
             mask: true,
+            duration: 7000,
         }) 
         wx.cloud.callFunction({
             name: 'quickstartFunctions',
@@ -82,7 +83,11 @@ Page({
 
     },
     auditWillsRecord(index, where, update){
-        wx.showLoading();
+        wx.showLoading({
+            title: '更新中',
+            mask: true,
+            duration: 7000,
+        });
         wx.cloud.callFunction({
             name: 'quickstartFunctions',
             config:{

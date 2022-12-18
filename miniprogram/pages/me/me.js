@@ -80,7 +80,9 @@ Page({
 
     loginClick(){
         wx.showLoading({
-            title: "正在登录"
+            title: "正在登录",
+            mask: true,
+            duration: 7000,
         })
         //get openId
         wx.cloud.callFunction({

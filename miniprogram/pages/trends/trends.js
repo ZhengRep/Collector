@@ -64,6 +64,7 @@ Page({
         wx.showLoading({
             title: showLoadingTitle,
             mask: true,
+            duration: 7000,
         }) 
         wx.cloud.callFunction({
             name: 'quickstartFunctions',

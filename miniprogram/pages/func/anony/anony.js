@@ -34,6 +34,11 @@ Page({
         this.setData({'record.date': date});
 
         console.log('record', this.data.record);
+        wx.showLoading({
+          title: '正在提交',
+          mask: true,
+          duration: 7000,
+        })
         wx.cloud.callFunction({
             name: 'quickstartFunctions',
             config: {
@@ -46,6 +51,7 @@ Page({
             }
         }).then((res)=>{
             console.log(res);
+            wx.hideLoading();
             wx.navigateBack({
                 delta: 0,
             })
@@ -54,6 +60,7 @@ Page({
               icon: 'success',
             })
         }).catch((e)=>{
+            wx.hideLoading();
             wx.showToast({
               title: '出现错误',
               icon: 'error',
