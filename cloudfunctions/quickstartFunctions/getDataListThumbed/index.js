@@ -10,7 +10,6 @@ exports.main = async (event, context)=>{
     return await db.collection('thumbs')
     .aggregate()
     .match(event.match)
-    .sort(event.sort)
     .skip(event.skip)
     .limit(event.limit)
     .lookup({
@@ -31,7 +30,8 @@ exports.main = async (event, context)=>{
         willInfo: 0,
     })
     .addFields({
-       hasThumb: true, 
+        hasThumb: true, 
     })
+    .sort(event.sort)
     .end()
 }
