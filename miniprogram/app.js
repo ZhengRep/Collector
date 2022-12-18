@@ -8,6 +8,9 @@ App({
         defaultNickName: '微信用户',
         defaultAvatarUrl: 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0',
         envId: "cloud1-4gvdt5akf6c97f23",
+        verifyAdmin: false,
+        isAdmin: false,
+        
     },
 
     onLaunch: function () {
@@ -29,7 +32,8 @@ App({
                 key:'Collector-openId',
                 success:(res)=>{
                     this.globalData.openId = res.data,
-                    this.globalData.hasUserInfo = true
+                    console.log(this.globalData.openId);
+                    this.globalData.hasUserInfo = true;
                 }
             })
             wx.getStorage({
@@ -43,7 +47,7 @@ App({
                 success: (res)=>{
                     this.globalData.defaultNickName = res.data,
                     console.log('globalData', this.globalData);
-                }n
+                }
             })
         }
     }

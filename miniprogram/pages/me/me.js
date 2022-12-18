@@ -6,11 +6,9 @@ Page({
      * Page initial data
      */
     data: {
-        nickName: "",
-        hasUserInfo: app.globalData.hasUserInfo,
         avatarUrl: app.globalData.defaultAvatarUrl,
         nickName: app.globalData.defaultNickName,
-        isAdmin: false,
+        isAdmin: app.globalData.isAdmin,
     },
 
     /**
@@ -20,9 +18,33 @@ Page({
       //check is admin
       if(!app.globalData.hasUserInfo){
           this.setNickNameStorage(this.data.nickName);
-          this.setAvatarUrlStorage(this.data.nickName);
+          this.setAvatarUrlStorage(this.data.avatarUrl);
       }
-      
+      if(!app.globalData.verify){
+          this.verifyAdmin();
+      }
+
+    },
+    verifyAdmin(){
+        wx.cloud.callFunction({
+            name: 'quickstartFunctions',
+            config:{
+                env: app.globalData.envId,
+            },
+            data:{
+                type: 'isAdmin',
+                openId: app.globalData.openId
+            }
+        }).then(res=>{
+            console.log(res);
+            if(res.result.total){
+                this.setData({isAdmin: true});
+                app.globalData.isAdmin = true;
+            }
+        }).catch(e=>{
+            console.log(e);
+          })
+          app.globalData.verifyAdmin = true;
     },
     onChooseAvatar(e){
         const {avatarUrl} = e.detail;
@@ -35,10 +57,13 @@ Page({
     },
     getNickName(e){
         console.log('nickName', e.detail.value);
-        this.setData({
-            nickName: e.detail.value
-        })
-        this.setNickNameStorage(e.detail.value);
+        var nickName = e.detail.value;
+        if(nickName.length){
+            this.setData({
+                nickName: e.detail.value
+            })
+            this.setNickNameStorage(e.detail.value);
+        }
     },
     setAvatarUrlStorage(str){
         wx.setStorage({
@@ -72,9 +97,12 @@ Page({
             wx.hideLoading();
             app.globalData.openId = res.result.openid;
             app.globalData.hasUserInfo = true;
+            this.verifyAdmin();
+
             //storage userInfo
             wx.setStorage({
                 key: 'Collector-openId',
+                
                 data: res.result.openid,
             })
         }).catch(e=>{
@@ -111,7 +139,9 @@ Page({
      * Lifecycle function--Called when page show
      */
     onShow() {
-        
+        this.setData({
+            hasUserInfo: app.globalData.hasUserInfo,
+        })
     },
 
     /**

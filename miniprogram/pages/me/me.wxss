@@ -24,3 +24,16 @@
     font-size: 16px;
 }
 
+.admin-img{
+    height: 16px;
+    width: 16px;
+}
+
+.admin-wrapper{
+    display: flex;
+    justify-content: center;
+    padding-top: 10px;
+    font-size: 13px;
+    color: #f18f43;
+}
+

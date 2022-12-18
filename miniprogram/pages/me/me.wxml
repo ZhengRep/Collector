@@ -10,11 +10,15 @@
                 <image class="avatar" style="height: 60px; width: 60px; border-radius: 50%;" src="{{avatarUrl}}"></image>
             </button> 
             <input class="input-nickname" type="nickname" bindblur="getNickName" placeholder="{{nickName}}"/>
+            <view class="admin-wrapper" wx:if="{{isAdmin}}">
+                <image class="admin-img" src="../../images/admin.svg"/>
+                <text style="margin-left: 5px;">管理员</text>
+            </view>
         </view>
     </view>
     <view class="utility">
         <view bindtap="gotoHisWillsPage">历史意愿</view>
         <view bindtap="gotoThumbWillsPage">点赞意愿</view>
-        <view wx:if="{{isAdmin}}" bindtap="gotoAuditWillsPage">匿名意愿</view>
+        <view wx:if="{{isAdmin}}" bindtap="gotoAuditWillsPage">审核意愿</view>
     </view>
 </view>
