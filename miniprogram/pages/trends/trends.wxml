@@ -7,9 +7,9 @@
     </view>
     <swiper class="swiper" current="{{activeTab}}" easing-function="linear" bindchange="onChangeSwipper">
         <swiper-item>
-            <view wx:if="{{listTable[0].length != 0}}" class="swiper-item hot-list">
+            <view class="swiper-item hot-list">
                 <scroll-view scroll-y="true" refresher-enabled="{{true}}" refresher-triggered="{{refresherTrigger}}" bindrefresherrefresh="onScrollRefresh" bindscrolltolower="getNewData" class="scroll-view-wrapper">
-                    <view class="scroll-item" wx:for="{{listTable[0]}}" wx:key="title">
+                    <view wx:if="{{listTable[0].length != 0}}" class="scroll-item" wx:for="{{listTable[0]}}" wx:key="title">
                         <view wx:if="{{item.type}}" class="user-info user-item">
                             <view class="name">{{item.name}}</view>
                             <view class="stu-id">{{item.stuId}}</view>
@@ -29,17 +29,17 @@
                             </view>
                         </view>
                     </view>
+                    <view wx:if="{{listTable[0].length == 0}}" class="empty-tip">
+                        <image class="empty-img" src="../../images/no_data.svg"/>
+                        <text style='display: block; font-size: 13px;'>暂无数据</text>
+                    </view>
                 </scroll-view>
-            </view>
-            <view wx:else class="empty-tip">
-                <image class="empty-img" src="../../images/no_data.svg"/>
-                <text style='display: block; font-size: 13px;'>暂无数据</text>
             </view>
         </swiper-item>
         <swiper-item>
-            <view wx:if="{{listTable[1].length != 0}}" class="swiper-item new-list">
+            <view class="swiper-item new-list">
                 <scroll-view scroll-y="true" refresher-enabled="{{true}}" refresher-triggered="{{refresherTrigger}}" bindrefresherrefresh="onScrollRefresh" bindscrolltolower="getNewData" class="scroll-view-wrapper">
-                    <view class="scroll-item" wx:for="{{listTable[1]}}" wx:key="title">
+                    <view  wx:if="{{listTable[1].length != 0}}" class="scroll-item" wx:for="{{listTable[1]}}" wx:key="title">
                         <view wx:if="{{item.name.length}}" class="user-info user-item">
                             <view class="name">{{item.name}}</view>
                             <view class="stu-id">{{item.stuId}}</view>
@@ -59,11 +59,11 @@
                             </view>
                         </view>
                     </view>
+                    <view wx:if="{{listTable[1].length == 0}}" class="empty-tip">
+                        <image class="empty-img" src="../../images/no_data.svg"/>
+                        <text style='display: block; font-size: 13px;'>暂无数据</text>
+                    </view>
                 </scroll-view>
-            </view>
-            <view wx:else class="empty-tip">
-                <image class="empty-img" src="../../images/no_data.svg"/>
-                <text style='display: block; font-size: 13px;'>暂无数据</text>
             </view>
         </swiper-item>
     </swiper>
