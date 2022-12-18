@@ -9,19 +9,27 @@ const _ = db.command;
 
 exports.main = async (event, context)=>{
     try{
-        await db.collection('wills').where({
-            _id: event.thumbId,
-        }).update({
-            data:{
-                thumbNum: _.inc(-1)
-            }
-        })
-
-        //delete thumbs
-        return db.collection('thumbs').where({
+        await db.collection('thumbs').where({
             openId: event.openId,
             thumbId: event.thumbId,
-        }).remove()
+        }).count()
+        .then(res=>{
+            if(res.total){
+                db.collection('wills').where({
+                    _id: event.thumbId,
+                }).update({
+                    data:{
+                        thumbNum: _.inc(-1)
+                    }
+                })
+        
+                //delete thumbs
+                return db.collection('thumbs').where({
+                    openId: event.openId,
+                    thumbId: event.thumbId,
+                }).remove()
+            }
+        })
     }
     catch(e){
         return {

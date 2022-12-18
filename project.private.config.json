@@ -104,6 +104,13 @@
                     "query": "",
                     "launchMode": "default",
                     "scene": null
+                },
+                {
+                    "name": "",
+                    "pathName": "pages/me/auditWills/auditWills",
+                    "query": "",
+                    "launchMode": "default",
+                    "scene": null
                 }
             ]
         }
