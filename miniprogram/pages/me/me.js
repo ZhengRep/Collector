@@ -143,6 +143,8 @@ Page({
     onShow() {
         this.setData({
             hasUserInfo: app.globalData.hasUserInfo,
+            nickName: app.globalData.nickName,
+            avatarUrl: app.globalData.avatarUrl,
         })
     },
 

@@ -44,17 +44,17 @@ Page({
             })
             return;
         }
+        wx.showLoading({
+          title: '正在提交',
+          mask: true,
+          duration: 7000,
+        })
         //get time
         var time = new Date();
         var date = formatTime(time);
         this.setData({'record.date': date});
 
         console.log('record', this.data.record);
-        wx.showLoading({
-          title: '正在提交',
-          mask: true,
-          duration: 7000,
-        })
         wx.cloud.callFunction({
             name: 'quickstartFunctions',
             config: {
@@ -67,14 +67,18 @@ Page({
             }
         }).then((res)=>{
             console.log(res);
-            wx.hideLoading();
-            wx.navigateBack({
-                delta: 0,
-            })
-            wx.showToast({
-              title: '已发布',
-              icon: 'success',
-            })
+            wx.hideLoading({
+                success: (res)=>{
+                    wx.navigateBack({
+                        delta: 0,
+                    }).then(res=>{
+                        wx.showToast({
+                          title: '已发布',
+                          icon: 'success',
+                        })
+                    })
+                }
+            });
         }).catch((e)=>{
             wx.hideLoading();
             wx.showToast({

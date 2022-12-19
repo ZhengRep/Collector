@@ -3,7 +3,7 @@
     <view class="user-info items">
         <view class="item">
             <text>姓名</text>
-            <input class='input' bindinput="getNameValue" placeholder="请输入" confirm-type="next" maxlength="5"/>
+            <input class='input' bindinput="getNameValue" placeholder="请输入" confirm-type="next" maxlength="20"/>
         </view>
         <view class="item">
             <text>学号</text>
