@@ -8,6 +8,7 @@ const getDataListOfThumb = require('./getDataListOfThumb/index')
 const deleteWill = require('./deleteWill/index')
 const getDataListThumbed = require('./getDataListThumbed/index')
 const isAdmin = require('./isAdmin/index')
+const updateHotList = require('./updateHotList/index')
 
 // 云函数入口函数
 exports.main = async (event, context) => {

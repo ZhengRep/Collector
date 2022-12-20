@@ -1,0 +1,11 @@
+{
+    "triggers":[
+        {
+            "name": "updateHotListTrigger",
+            "type": "timer",
+            "config": "*/5 * * * * * *"
+
+        }
+    ]
+
+}
