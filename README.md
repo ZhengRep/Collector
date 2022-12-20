@@ -25,9 +25,37 @@
 
 ## 截图展示
 
-1. 
+1. 使用该小程序首先需要进行登录授权
+
+2. 登录完成后，可以自定义用户头像、昵称，并且可以动态判断该用户是否具有管理员权限。
+
+   <img src="README.assets/loge_in.PNG" style="zoom: 33%;" />
+
+3. 热门中有热门榜和最新榜，可以对自己喜欢的意愿进行点赞。
 
 
+
+<img src="README.assets/trends_hot.PNG" style="zoom: 33%;" />
+
+<img src="README.assets/trends_new.PNG" style="zoom: 33%;" />
+
+4. 发起意愿中，有实名发起意愿和匿名发起意愿，实名意愿需要输入名字和学号，匿名需要管理员进行审核后才进行展示。
+
+<img src="README.assets/func.PNG" style="zoom: 33%;" />
+
+
+
+5. 用户可以查看自己的历史意愿，点赞意愿
+
+
+
+<img src="README.assets/me_his.PNG" style="zoom: 33%;" />
+
+<img src="README.assets/me_thumbed.PNG" style="zoom: 33%;" />
+
+6.  如果是管理员，会有审核意愿的功能和权限
+
+<img src="README.assets/me_audit.PNG" style="zoom: 33%;" />
 
 ## 数据库
 
@@ -85,7 +113,11 @@ trends 测试：
 | 登录记录的信息有误（异步？）                   |          | w（等待测试） |
 | 热门榜定义 最新榜定义                          |          | w             |
 
-### 更新数据库
+### 待完成
+
+1. 最新榜和热门榜的重新定义
+2. 定时更新往期热门
+3. 小程序多端显示文字动态适配
 
 重新思考：
 
