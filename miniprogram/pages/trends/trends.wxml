@@ -1,6 +1,6 @@
 <!--pages/trends/trends.wxml-->
 <view class="container">
-    <view class="tab-bars-wrapper">
+    <view class="tab-bars-wrapper" style="background-color: #87CEFA;border-color: #87CEFA;">
         <view class="tab-bars-item {{activeTab == index ? 'active' : ''}}" wx:for="{{tabs}}" bindtap="clickTab" data-index="{{index}}" wx:key="title">
             <text>{{item.title}}</text>
         </view>

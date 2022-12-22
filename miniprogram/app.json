@@ -13,20 +13,20 @@
     "window": {
         "backgroundColor": "#F6F6F6",
         "backgroundTextStyle": "light",
-        "navigationBarBackgroundColor": "#F6F6F6",
+        "navigationBarBackgroundColor": "#87CEFA",
         "navigationBarTitleText": "",
         "navigationBarTextStyle": "black"
     },
     "tabBar": {
         "color": "#666666",
-        "selectedColor": "#707070",
+        "selectedColor": "#00FF00",
         "backgroundColor": "#ffffff",
         "borderStyle": "black",
         "list": [
             {
                 "pagePath": "pages/trends/trends",
                 "iconPath": "images/Tabbar/trends.png",
-                "selectedIconPath": "images/Tabbar/trends_s.png",
+                "selectedIconPath": "images/Tabbar/trends_s .png",
                 "text": "热门"
             },
             {
