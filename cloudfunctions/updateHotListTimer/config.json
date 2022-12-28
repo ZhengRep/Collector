@@ -1,9 +1,14 @@
 {
+    "permissions": {
+        "openapi": [
+          "wxacode.get"
+        ]
+      },
     "triggers":[
         {
             "name": "updateHotListTrigger",
             "type": "timer",
-            "config": "*/5 * * * * * *"
+            "config": ""
 
         }
     ]
