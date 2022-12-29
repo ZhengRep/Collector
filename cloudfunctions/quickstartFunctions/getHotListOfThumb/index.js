@@ -16,7 +16,8 @@ exports.main = async (event, context)=>{
     return await db.collection('wills')
     .aggregate()
     .match({
-        thumbNum: _.gte(7)
+        thumbNum: _.gte(7),
+        hadHot: false,
     })
     .sort(event.sort)
     .skip(event.skip)

@@ -8,7 +8,7 @@ const _ = db.command;
 // 云函数入口函数
 exports.main = async (event, context) => {
     var today = db.serverDate({
-        offset: -1000*60*60*24*7 //7 day ago
+        offset: -1000*60*60*24*7 //7 day ago year/month/day
     });
     db.collection('wills').where({
         hadHot: false,
