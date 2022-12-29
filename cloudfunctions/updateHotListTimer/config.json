@@ -8,7 +8,7 @@
         {
             "name": "updateHotListTrigger",
             "type": "timer",
-            "config": ""
+            "config": "0 30 3 * * * *"
 
         }
     ]

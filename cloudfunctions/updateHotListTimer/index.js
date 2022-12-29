@@ -7,11 +7,16 @@ const db = cloud.database();
 const _ = db.command;
 // 云函数入口函数
 exports.main = async (event, context) => {
+    var today = db.serverDate({
+        offset: -1000*60*60*24*7 //7 day ago
+    });
     db.collection('wills').where({
-        '_id': "df35299463a032e20041891636737f90",
+        hadHot: false,
+        thumbNum: _.gte(7),
+        date: _.lte(today),
     }).update({
         data:{
-          thumbNum: _.inc(1),
+          hadHot: true,
         }
     })
 } 
