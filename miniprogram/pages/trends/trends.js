@@ -65,14 +65,18 @@ Page({
             title: showLoadingTitle,
             mask: true,
             duration: 7000,
-        }) 
+        })
+        var funcType = 'getDataListOfThumb';
+        if(listName == 'hotList'){
+            funcType = 'getHotListOfThumb';
+        }
         wx.cloud.callFunction({
             name: 'quickstartFunctions',
             config:{
                 envId: app.globalData.envId,
             },
             data:{
-                type: 'getDataListOfThumb',
+                type: funcType,
                 openId: app.globalData.openId,
                 match: match,
                 sort: sort,

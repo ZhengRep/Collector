@@ -9,6 +9,7 @@ const deleteWill = require('./deleteWill/index')
 const getDataListThumbed = require('./getDataListThumbed/index')
 const isAdmin = require('./isAdmin/index')
 const updateHotList = require('./updateHotList/index')
+const getHotListOfThumb = require('./getHotListOfThumb/index')
 
 // 云函数入口函数
 exports.main = async (event, context) => {
@@ -33,6 +34,8 @@ exports.main = async (event, context) => {
         return await getDataListThumbed.main(event, context);
     case 'isAdmin':
         return await isAdmin.main(event, context);
+    case 'getHotListOfThumb':
+        return await getHotListOfThumb.main(event, context);
     default:
         return 'no function';
   }
