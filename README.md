@@ -70,7 +70,7 @@ table: wills
     'date':'', //year-month-day hour:minute 
     'audit': 0, //1->wait audit 2->pass 0->not pass
     'type': 0, //0->anony, 1->autony
-    'hot':true, //false->no hot, true had hot 
+    'hadHot':true, //false->no hot, true had hot 
     'thumbNum': 2
 }
 ```
@@ -79,8 +79,9 @@ table: thumbs
 
 ```json
 {
-    'appId': '',
-    'thumbId': 1
+    'openId': '',
+    'thumbId': 1，
+    'date': ,
 }
 ```
 
